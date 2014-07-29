@@ -1,0 +1,70 @@
+@import url(http://fonts.googleapis.com/css?family=Inconsolata:700);
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+/* entypo */
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+}
+@media screen and (max-width: 1429px) {
+.mobile-menu {
+  width: 75px;
+  background: white;
+  /*  border-right: 1px solid $slate;*/
+  position: absolute;
+  top:0px;
+  left:0px;
+  z-index: 10;
+  height: 100%;
+}
+.mobile-menu li {
+  position: relative;
+  margin-left: -20px;
+  color: #404041;
+  width: 75px;
+  height: 50px;
+  text-align: center;
+  font-size: 22px;
+  line-height: 50px;
+  z-index: 9999;
+  display: block;
+  -moz-transition-property: color;
+  -o-transition-property: color;
+  -webkit-transition-property: color;
+  transition-property: color;
+  -moz-transition-duration: 300ms;
+  -o-transition-duration: 300ms;
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+}
+.mobile-menu li:hover {
+  color: #ff3e39;
+}
+.mobile-menu li:hover a {
+  left: 100px;
+  visibility: visible;
+}
+.mobile-menu li:first-child {
+  padding-top: 10px;
+}
+.mobile-menu li:last-child {
+  padding-bottom: 10px;
+}
+.mobile-menu li a {
+  cursor:pointer;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  position: absolute;
+  z-index: 0;
+  left: -100px;
+  color: black;
+  visibility:hidden;
+  -moz-transition-property: left;
+  -o-transition-property: left;
+  -webkit-transition-property: left;
+  transition-property: left;
+  -moz-transition-duration: 300ms;
+  -o-transition-duration: 300ms;
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+}
+}

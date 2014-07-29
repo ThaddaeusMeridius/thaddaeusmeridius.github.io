@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- MATHJAX -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            extensions: ["tex2jax.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath: [['$', '$'], ["\\(", "\\)"]],
+                displayMath: [['$$', '$$'], ["\\[", "\\]"]],
+                processEscapes: true
+            },
+            "HTML-CSS": {
+                availableFonts: ["TeX"],
+                scale: 120
+            },
+            NativeMML: {
+                scale: 120
+            },
+            MathMenu: {
+                showRenderer: true
+            },
+            TeX: {
+              extensions: ["enclose.js"]
+            }
+        });
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+	<meta charset="utf-8" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<!-- Our site title and description -->
+	<title>Exponential Form of Complex Numbers | Mathemia</title>
+	<meta name="description" content="An online collective of mathematical concepts delivered in a visually engaging way." />
+	<meta name="keywords" content="math, calculus, mathematics, theory, mathematical, maths, integral, derivative, analysis, 3d, cauchy, euler, euclid" />
+	<meta name="author" content="Thorstein Fischer" />
+
+	<!-- Output DocPad produced meta elements -->
+	<meta name="generator" content="DocPad v6.69.0" />
+	<meta name="viewport" content="width=device-width" />
+
+	<!--  Icons -->
+		<!-- <link rel="shortcut icon" href="images/icons/favicon.ico">
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/icons/apple-touch-icon-144-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/icons/apple-touch-icon-114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/icons/apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" href="images/icons/apple-touch-icon-57-precomposed.png"> --> 
+
+	<!-- Styles -->
+	<link  rel="stylesheet" href="/styles/style.css" /><link  rel="stylesheet" href="/styles/nexmenu/component.css" />
+        <link rel='stylesheet' href="/styles/tab-menu.css">
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href='http://fonts.googleapis.com/css?family=Fenix' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+	    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700|Open+Sans:400,600,700|Roboto:400,500,700|Roboto+Slab:400,700|Bitter:400,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="initial-scale=1, width=device-width">
+        <script src="/scripts/modernizr-custom.js"></script>
+</head>
+<body class="section-material-design first-chapter">
+    <ul id="gn-menu" class="gn-menu-main mobile-menu">
+        <li class="gn-trigger">
+            <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+            <nav class="gn-menu-wrapper">
+                <div class="gn-scroller">
+                    <ul class="gn-menu">
+                        <li>
+                            <a class="gn-icon gn-icon-archive" href="/pages/logic">Logic</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-abacus" href="/pages/algebra-home">Algebraic</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-ruler" href="/pages/geo-home">Geometric</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-graph" href="/pages/analytic-home">Analytic</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-bars" href="/pages/probability">Probability and Statistics</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-atom" href="/pages/physics">Physics</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-book" href="/pages/historic">Historic</a>
+                        </li>
+                    </ul>
+                </div><!-- /gn-scroller -->
+            </nav>
+        </li>
+        <li><a href="/">Mathemia</a></li>
+        <li class="extra-links"><a href="/">Physics</a></li>
+        <li class="extra-links"><a href="/">Index</a></li>
+        <li class="extra-links"><a href="/">${\LaTeX}$</a></li>
+        <li class="extra-links"><a href="/">Links</a></li>
+        <li class="extra-links"><a href="/">Resources</a></li>
+        <li class="extra-links"><a href="/">About</a></li>
+    </ul>
+    <script src="/scripts/classie.js"></script>
+    <script src="/scripts/gnmenu.js"></script>
+    <script>
+        new gnMenu( document.getElementById( 'gn-menu' ) );
+    </script>
+	<header>
+
+        <div class="header-wrapper">
+            <div class="header-title">
+                <span class="section-title">Mathematics</span>
+                <span class="chapter-title">Topics</span>
+            </div>
+        </div>
+    </header>
+    <div id="side-nav" class="scroll-bar">
+        <div class="side-nav-wrapper">
+            <span id="logo">
+                <a href="/"><div style="height:128px;">&nbsp;</div></a>
+            <!-- <a href="/">Mathemia</a> -->
+            </span>
+            <nav>
+                <dl>
+                    <a class="" style="padding-left: 22px;background-color: #fff;" href="/">Mathematics Home</a>
+
+                    <dt><span class="strikethrough" id="foundations-nav">Logic</span></dt>
+                    <div id="found-inner" class="inner-menu">
+                        
+                    </div>
+                    <dt><span id="algebra-nav">Algebraic</span></dt>
+                    <div id="alg-inner" class="inner-menu">
+                        
+                        <dd>
+                            <a class="" href="/posts/partial-fractions">Partial Fractions</a>
+                        </dd>
+                        
+                    </div>
+                    <dt><span id="geometry-nav">Geometric</span></dt>
+                    <div id="geo-inner" class="inner-menu">
+                        
+                        <dd>
+                            <a class="" href="/posts/coordinate-systems">Coordinate Systems</a>
+                        </dd>
+                        
+                    </div>
+                    <dt><span id="differential-nav">Analytic</span></dt>
+                    <div  id="diff-inner" class="inner-menu">
+                        <dd>
+                            <a class="" href="/pages/calc-real-home">Calculus and Real Analysis</a>
+                        </dd>
+                        <dd>
+                            <a class="" href="/pages/complex-home">Complex Analysis</a>
+                        </dd>
+                        <dd>
+                            <a class="" href="/pages/diffeq-home">Differential Equations</a>
+                        </dd>
+                        <dd>
+                            <a class="" href="/pages/functional-home">Functional Analysis</a>
+                        </dd>
+                        <dd>
+                            <a class="" href="/pages/numerical-home">Numerical Analysis and Optimization</a>
+                        </dd>
+                    </div>
+                    <dt><span class="strikethrough" id="probstats-nav">Probability and Statistics</span></dt>
+                    <div  id="prob-inner" class="inner-menu">
+                        
+                    </div>
+                    <dt><span class="strikethrough" id="history-nav">Physics</span></dt>
+                    <div id="hist-inner" class="inner-menu">
+                        
+                        <dd>
+                            <a class="" href="/pages/physics">Physics</a>
+                        </dd>
+                        
+                    </div>
+                    <dt><span class="strikethrough" id="history-nav">Historic</span></dt>
+                    <div id="hist-inner" class="inner-menu">
+                        
+                    </div>
+                </dl>
+            </nav>
+            <hr>
+            
+            <div id="lower-menu"><a href="/pages/about">About</a></div>
+            
+            <div id="lower-menu"><a href="/pages/glossary">Index</a></div>
+            
+            <div id="lower-menu"><a href="/pages/latex">${\LaTeX}$</a></div>
+            
+            <div id="lower-menu"><a href="/pages/links">Links</a></div>
+            
+            <div id="lower-menu"><a href="/pages/physics">Physics</a></div>
+            
+            <div id="lower-menu"><a href="/pages/resources">Resources</a></div>
+            
+            <div id="lower-menu"><a href="/pages/terminology">Style Guide</a></div>
+            
+            <div class="legal">
+            <p class="copyright">Mathemia ©</p>
+            </div>
+        </div>
+    </div>
+    <div id="grid-cont">
+        <section class="grid_outer chapter">
+            <h1 class="chapter-title">Exponential Form of Complex Numbers</h1>
+            <div class="chapter-content">
+                <div style="display:none;">
+                    $\def\RR{\mathbb{R}}$
+                    $\def\ZZ{\mathbb{Z}}$
+                    $\def\NN{\mathbb{N}}$
+                    $\def\CC{\mathbb{C}}$
+                    $\newcommand{\v}[1]{\vec{\mathbf{#1}}}$
+                    $\newcommand{\(}[1]{\left( #1 \right)}$
+                    $\newcommand{\[}[1]{\left[ #1 \right]}$
+                    $\newcommand{\<}[1]{\left< #1 \right>}$
+                    $\newcommand{\|}[1]{\left| #1 \right|}$
+                    $\newcommand{\lbr}[1]{\left\lbrace #1 \right\rbrace}$
+                    $\newcommand{\f}[1]{f \left( #1 \right)}$
+                    $\newcommand{\g}[1]{g \left( #1 \right)}$
+                    $\def\re{\mathcal{Re}}$
+                    $\def\im{\mathcal{Im}}$
+                </div>
+                Let $r$ and $\theta$ be polar coordinates of the point $\({x,y}$ that corresponds to a nonzero complex number $z=x+i\,y$. Since $x=r\cos\theta$ and $y=r\sin\theta$, the number $z$ can be written in polar form as
+$$z=r\({\cos\theta+i\, \sin\theta}$$
+$r$ is the length of the radius vector for $z$, in essence, $r=\|{z}$. $\theta$ is the angle $z$ makes with the positive real axis and can be calculated from
+$$\tan\theta=\frac yx$$
+and each value of $\theta$ is called the argument of $z$, where it's set is denoted as $\arg z$. The unique value that lies between $-\pi \leq \Theta \leq \pi$ is called the principle value of $\arg z$ denoted as $\mathrm{Arg}\({z}$.
+$$\arg z = \mathrm{Arg}\({z} + 2n\pi \qquad \({n=0,\pm1,\pm2,\dots}$$
+
+<h2 class="article-title">Example 1</h2>
+Find the principle argument of the complex number $-1-i$.
+
+Solving we find that 
+$$\mathrm{Arg}\({-1-i} = -\frac{3\pi}{4}$$
+and
+$$\arg \({-1-i} = -\frac{3\pi}{4} + 2n\pi \qquad \({n=0,\pm1,\pm2, \dots}$$
+Now we can express $z$ in exponential form. The symbol $e^{i\theta}$ is defined by means of Euler's formula as
+$$e^{i\theta}=\cos\theta + i\, \sin\theta$$
+this lets use write $z$ as
+$$z=re^{i\theta}$$
+
+<h2 class="article-title">Example 2</h2>
+The number $-1-i$ has the exponential form
+$$-1-i=\sqrt{2} exp\[{i\({-\frac{3\pi}{4}+2n\pi}} \qquad \({n=0,\pm1,\pm2,\dots}$$
+##Products and Powers in Exponential Form##
+Additive property of the exponential form
+$$e^{i\theta_1}e^{i\theta_2} = e^{i\({\theta_1+\theta_2}}$$
+If we let $z_1=r_1e^{i\theta_1}$ and $z_2=r_2e^{i\theta_2}$
+$$z_1z_2=\({r_1r_2}e^{\({\theta_1+\theta_2}}$$
+Furthermore
+$$\frac{z_1}{z_2} = \frac{r_1}{r_2} e^{i\({\theta_1-\theta_2}}$$
+which leads to the property that
+$$z^{-1}= \frac 1r e^{-i}$$
+This can be generalized as
+$$z^n = r^n e^{in\theta}$$
+It can be shown that if $n=m+1$ then
+$$z^{m+1} = r^{m+1}e^{i\({m+1}\theta}$$
+
+<h2 class="article-title">Principal Arguments</h2>
+$$\arg \({z_1z_2} = \({\theta_1+\theta_2} + 2n\pi \tag{1}$$
+$$\arg z_1 = \theta_1 +2n_1\pi$$
+we see that in order to satisfy the equation $\({1}$, we must have
+$$\arg z_2 = \theta_2 + 2\({n-n_1}\pi$$
+
+<h2 class="article-title">Roots of Complex Numbers</h2>
+
+Two complex numbers 
+$$z_1 = r_1 e^{i\theta_1} \qquad \mathrm{and} \qquad z_2=r_2 e^{i\theta_2}$$
+are equal $\iff$
+$$r_1=r_2 \qquad \mathrm{and} \qquad \theta_1=\theta_2 + 2k\pi$$
+where $k \in \ZZ$
+The $n^{\mathrm{th}}$ root of a complex number $z^n$ is a nonzero number $z=re^{i\theta}$ such that $z^n = z_0$ or
+
+$$r^n e^{in\theta} = r_0 e^{i\theta_0}$$
+as such, from above we see that we must have
+$$r^n=r_0 \qquad \mathrm{and} \qquad n\theta = \theta_0 + 2k\pi$$
+where, as usual, $k \in \ZZ$. So $r=\sqrt[n]{r_0}$where this radical denotes the unique positive $n^{\mathrm{th}}$ of the positive real number $r_0$, and
+$$\theta = \frac{\theta_0 + 2k\pi}{n} = \frac{\theta_0}{n} + \frac{2k\pi}{n}$$
+As such, the complex numbers
+$$z = \sqrt[n]{r_0} \exp{\[{i \({\frac{\theta_0}{n} + \frac{2k\pi}{n}}}} \qquad k\in\ZZ$$
+are the $n^{\mathrm{th}}$ roots of $z_0$.
+
+If we define for $z_0$
+$$c_0= \sqrt[n]{r_0} e^{i\theta_0/n}$$ 
+and 
+$$w^k_n = \exp\({i \frac{2k\pi}{n}} \qquad \({ k = 0,1,2,\dots,n-1}$$
+we can write
+$$c_k = c_0 w_n^k$$
+Here, $c_0$ can be replaced by any $n^{\mathrm{th}}$ root of $z_0$.
+
+This can be generalized to
+$$z_0 = r_0 e^{i \({\theta_0+2k\pi}}$$
+Now to apply this to fractional exponents, ie. roots,
+$$z_0^{1/n} = \sqrt[n]{r_0} \exp \[{i\({\frac{\theta_0}{n}+\frac{2k\pi}{n}}}$$
+
+<h2 class="article-title">Example 1</h2>
+Find all the values of $\({-8i}^{1/3}$, ie. find the three cube roots of the number $-8i$.
+
+To do this, we write
+$$-8i = 8 \exp\[{i\({-\frac{\pi}{2} + 2k\pi}}$$
+then by taking the cube root of the above,
+$$c_k = 2\exp\[{i\({-\frac{\pi}{6}+\frac{2k\pi}{3}}}$$
+this gives us, for the principal root,
+$$c_0 = 2\exp\[{i\({-\frac{\pi}{6}}} = \sqrt{3}-i$$
+
+which we can use to find the other 2 roots, which are
+$$\begin{align}
+c_1 &= 2i \\
+c_2 &= -\sqrt{3}-i
+\end{align}$$
+These roots can also be written as 
+$$c_0, \, c_0w_3, \, c_0w_3^2 \qquad \mathrm{where} \qquad w_3 = \exp\({i \frac{2\pi}{3}}$$
+            </div>
+        </section>
+    </div>
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-L section-animation">&nbsp;</div>
+            <div class="footer-grid-L section-animation">
+            </div>
+            <div class="footer-R section-animation">&nbsp;</div>
+            <div class="footer-grid-R section-animation">
+
+            </div>
+        </div>
+    </footer>
+
+	<!-- Scripts -->
+	<script defer="defer"  src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script><script defer="defer"  src="/scripts/nav-menu.js"></script>
+</body>
+</html>

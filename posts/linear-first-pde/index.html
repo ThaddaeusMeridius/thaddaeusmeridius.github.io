@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- MATHJAX -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            extensions: ["tex2jax.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath: [['$', '$'], ["\\(", "\\)"]],
+                displayMath: [['$$', '$$'], ["\\[", "\\]"]],
+                processEscapes: true
+            },
+            "HTML-CSS": {
+                availableFonts: ["TeX"],
+                scale: 120
+            },
+            NativeMML: {
+                scale: 120
+            },
+            MathMenu: {
+                showRenderer: true
+            },
+            TeX: {
+              extensions: ["enclose.js"]
+            }
+        });
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+	<meta charset="utf-8" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<!-- Our site title and description -->
+	<title>Linear First Order Partial Differential Equations | Mathemia</title>
+	<meta name="description" content="An online collective of mathematical concepts delivered in a visually engaging way." />
+	<meta name="keywords" content="math, calculus, mathematics, theory, mathematical, maths, integral, derivative, analysis, 3d, cauchy, euler, euclid" />
+	<meta name="author" content="Thorstein Fischer" />
+
+	<!-- Output DocPad produced meta elements -->
+	<meta name="generator" content="DocPad v6.69.0" />
+	<meta name="viewport" content="width=device-width" />
+
+	<!--  Icons -->
+		<!-- <link rel="shortcut icon" href="images/icons/favicon.ico">
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/icons/apple-touch-icon-144-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/icons/apple-touch-icon-114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/icons/apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" href="images/icons/apple-touch-icon-57-precomposed.png"> --> 
+
+	<!-- Styles -->
+	<link  rel="stylesheet" href="/styles/style.css" /><link  rel="stylesheet" href="/styles/nexmenu/component.css" />
+        <link rel='stylesheet' href="/styles/tab-menu.css">
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href='http://fonts.googleapis.com/css?family=Fenix' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+	    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700|Open+Sans:400,600,700|Roboto:400,500,700|Roboto+Slab:400,700|Bitter:400,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="initial-scale=1, width=device-width">
+        <script src="/scripts/modernizr-custom.js"></script>
+</head>
+<body class="section-material-design first-chapter">
+    <ul id="gn-menu" class="gn-menu-main mobile-menu">
+        <li class="gn-trigger">
+            <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+            <nav class="gn-menu-wrapper">
+                <div class="gn-scroller">
+                    <ul class="gn-menu">
+                        <li>
+                            <a class="gn-icon gn-icon-archive" href="/pages/logic">Logic</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-abacus" href="/pages/algebra-home">Algebraic</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-ruler" href="/pages/geo-home">Geometric</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-graph" href="/pages/analytic-home">Analytic</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-bars" href="/pages/probability">Probability and Statistics</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-atom" href="/pages/physics">Physics</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-book" href="/pages/historic">Historic</a>
+                        </li>
+                    </ul>
+                </div><!-- /gn-scroller -->
+            </nav>
+        </li>
+        <li><a href="/">Mathemia</a></li>
+        <li class="extra-links"><a href="/">Physics</a></li>
+        <li class="extra-links"><a href="/">Index</a></li>
+        <li class="extra-links"><a href="/">${\LaTeX}$</a></li>
+        <li class="extra-links"><a href="/">Links</a></li>
+        <li class="extra-links"><a href="/">Resources</a></li>
+        <li class="extra-links"><a href="/">About</a></li>
+    </ul>
+    <script src="/scripts/classie.js"></script>
+    <script src="/scripts/gnmenu.js"></script>
+    <script>
+        new gnMenu( document.getElementById( 'gn-menu' ) );
+    </script>
+	<header>
+
+        <div class="header-wrapper">
+            <div class="header-title">
+                <span class="section-title">Mathematics</span>
+                <span class="chapter-title">Topics</span>
+            </div>
+        </div>
+    </header>
+    <div id="side-nav" class="scroll-bar">
+        <div class="side-nav-wrapper">
+            <span id="logo">
+                <a href="/"><div style="height:128px;">&nbsp;</div></a>
+            <!-- <a href="/">Mathemia</a> -->
+            </span>
+            <nav>
+                <dl>
+                    <a class="" style="padding-left: 22px;background-color: #fff;" href="/">Mathematics Home</a>
+
+                    <dt><span class="strikethrough" id="foundations-nav">Logic</span></dt>
+                    <div id="found-inner" class="inner-menu">
+                        
+                    </div>
+                    <dt><span id="algebra-nav">Algebraic</span></dt>
+                    <div id="alg-inner" class="inner-menu">
+                        
+                        <dd>
+                            <a class="" href="/posts/partial-fractions">Partial Fractions</a>
+                        </dd>
+                        
+                    </div>
+                    <dt><span id="geometry-nav">Geometric</span></dt>
+                    <div id="geo-inner" class="inner-menu">
+                        
+                        <dd>
+                            <a class="" href="/posts/coordinate-systems">Coordinate Systems</a>
+                        </dd>
+                        
+                    </div>
+                    <dt><span id="differential-nav">Analytic</span></dt>
+                    <div  id="diff-inner" class="inner-menu">
+                        <dd>
+                            <a class="" href="/pages/calc-real-home">Calculus and Real Analysis</a>
+                        </dd>
+                        <dd>
+                            <a class="" href="/pages/complex-home">Complex Analysis</a>
+                        </dd>
+                        <dd>
+                            <a class="" href="/pages/diffeq-home">Differential Equations</a>
+                        </dd>
+                        <dd>
+                            <a class="" href="/pages/functional-home">Functional Analysis</a>
+                        </dd>
+                        <dd>
+                            <a class="" href="/pages/numerical-home">Numerical Analysis and Optimization</a>
+                        </dd>
+                    </div>
+                    <dt><span class="strikethrough" id="probstats-nav">Probability and Statistics</span></dt>
+                    <div  id="prob-inner" class="inner-menu">
+                        
+                    </div>
+                    <dt><span class="strikethrough" id="history-nav">Physics</span></dt>
+                    <div id="hist-inner" class="inner-menu">
+                        
+                        <dd>
+                            <a class="" href="/pages/physics">Physics</a>
+                        </dd>
+                        
+                    </div>
+                    <dt><span class="strikethrough" id="history-nav">Historic</span></dt>
+                    <div id="hist-inner" class="inner-menu">
+                        
+                    </div>
+                </dl>
+            </nav>
+            <hr>
+            
+            <div id="lower-menu"><a href="/pages/about">About</a></div>
+            
+            <div id="lower-menu"><a href="/pages/glossary">Index</a></div>
+            
+            <div id="lower-menu"><a href="/pages/latex">${\LaTeX}$</a></div>
+            
+            <div id="lower-menu"><a href="/pages/links">Links</a></div>
+            
+            <div id="lower-menu"><a href="/pages/physics">Physics</a></div>
+            
+            <div id="lower-menu"><a href="/pages/resources">Resources</a></div>
+            
+            <div id="lower-menu"><a href="/pages/terminology">Style Guide</a></div>
+            
+            <div class="legal">
+            <p class="copyright">Mathemia ©</p>
+            </div>
+        </div>
+    </div>
+    <div id="grid-cont">
+        <section class="grid_outer chapter">
+            <h1 class="chapter-title">Linear First Order Partial Differential Equations</h1>
+            <div class="chapter-content">
+                <div style="display:none;">
+                    $\def\RR{\mathbb{R}}$
+                    $\def\ZZ{\mathbb{Z}}$
+                    $\def\NN{\mathbb{N}}$
+                    $\def\CC{\mathbb{C}}$
+                    $\newcommand{\v}[1]{\vec{\mathbf{#1}}}$
+                    $\newcommand{\(}[1]{\left( #1 \right)}$
+                    $\newcommand{\[}[1]{\left[ #1 \right]}$
+                    $\newcommand{\<}[1]{\left< #1 \right>}$
+                    $\newcommand{\|}[1]{\left| #1 \right|}$
+                    $\newcommand{\lbr}[1]{\left\lbrace #1 \right\rbrace}$
+                    $\newcommand{\f}[1]{f \left( #1 \right)}$
+                    $\newcommand{\g}[1]{g \left( #1 \right)}$
+                    $\def\re{\mathcal{Re}}$
+                    $\def\im{\mathcal{Im}}$
+                </div>
+                Consider the equation
+$$\frac{\partial \phi}{\partial x} + a\({x,t} \frac{\partial \phi}{\partial t} = 0$$
+known as the Cauchy problem with initial conditions $\phi\({x,0} = \f x$. This equation is a homogeneous linear first order partial differential equation.
+We can solve this equation using the method of characteristics which are defined to be curves in the $\({x,t}$ plane, $x\({t}$, wihch satisfy the equation
+$$\frac{dx\({t}}{dt} = a\({x\({t},t}$$
+We then take the derivative along the characteristic curve
+$$\frac{d}{dt} \phi \({x\({t},t} = \frac{dx\({t}}{dt} \frac{\partial \phi\({x,t}}{\partial x} + \frac{\partial \phi \({x,t}}{\partial t}$$
+and as the characteristic satisfies
+$$\frac{d \({x,t}}{dt} = a\({x\({t}.t}$$
+one has
+$$\frac{d}{dt} \phi \({x\({t},t} = a \({x.t} \frac{\partial \phi \({x,t}}{\partial x} + \frac{\partial \phi \({x,t}}{\partial t} = 0$$
+as $\phi\({x,t}$ satisfies the homogeneous linear partial differential equation. Thus, $\phi\({x.t}$ is constant along a characteristic. Hence
+$$\begin{align}
+\phi\({x\({t},t} &= \phi\({x_0, 0} \\
+&= f\({x_0}
+\end{align}$$
+As such, if we can determine the characteristic, we can solve the Cauchy problem.
+
+<h2 class="article-title">Example 1</h2>
+Consider the Cauchy problem 
+$$\frac{\partial\phi}{\partial t} + c \frac{\partial\phi}{\partial x} = 0$$
+with initial conditions
+$$\phi\({x,0} = \f x$$
+
+
+We can easily determine the characteristic from the O.D.E.
+$$\frac{dx}{dt} = c$$
+which has solutions
+$$x\({t} = ct + x_0$$
+Thus, the solution $\phi\({x.t}$ is constant on the curve passing through $\({x_0,0}$ and is determined from
+$$\phi\({x,t} = \phi\({x\({t},t} = \f{x_0}$$
+Though when we invert the equation for the characteristic, we get
+$$x_0 = x-ct$$
+which gives us
+$$\phi\({x,t} = \f{x-ct}$$
+We can see that this satisfies both the initial condition and the differential equation. The above solution corresponds to a wave traveling in the positive direction with speed $c$.
+
+<h2 class="article-title">Non-homogeneous First Order P.D.E.'s</h2>
+Consider the equation
+$$\frac{\partial \phi}{\partial t} + a\({x,t} \frac{\partial\phi}{\partial x} = b\({x,t}$$
+This is an inhomogeneous (non-homogeneous) linear first order partial differential equation, which can be solved by taking an extension of the method of characteristics. Our inhomogeneous term $b\({x,t}$ acts as a source term and the initial condition is given by 
+$$\phi\({x,0} = \f{x}$$
+Thus, the characteristics are given by the solution of
+$$\frac{dx}{dt} = a\({x.t}$$
+and $x\({0} = x_0$. This solution along the characteristic is not constant due to the presence of our inhomogeneous term. We see that it satisfies
+$$\begin{align}
+\frac{d\phi\({x\({t},t}}{dt} &= \frac{\partial \phi}{\partial t} + \frac{ d\({t}}{dt} \frac{\partial\phi}{\partial x} \\
+&= \frac{\partial\phi}{\partial t}+ a\({x,t} \frac{\partial\phi}{\partial x} \\
+&= b\({x,t}
+\end{align}$$
+This solution can be found by integrating along the characteristic curve which yields
+$$\phi\({\({x},t} = \f{x_0} + \int_0^t dt' \,b\({x\({t'},t'}$$
+            </div>
+        </section>
+    </div>
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-L section-animation">&nbsp;</div>
+            <div class="footer-grid-L section-animation">
+            </div>
+            <div class="footer-R section-animation">&nbsp;</div>
+            <div class="footer-grid-R section-animation">
+
+            </div>
+        </div>
+    </footer>
+
+	<!-- Scripts -->
+	<script defer="defer"  src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script><script defer="defer"  src="/scripts/nav-menu.js"></script>
+</body>
+</html>

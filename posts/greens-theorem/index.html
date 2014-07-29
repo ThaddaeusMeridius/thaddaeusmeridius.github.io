@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- MATHJAX -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            extensions: ["tex2jax.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath: [['$', '$'], ["\\(", "\\)"]],
+                displayMath: [['$$', '$$'], ["\\[", "\\]"]],
+                processEscapes: true
+            },
+            "HTML-CSS": {
+                availableFonts: ["TeX"],
+                scale: 120
+            },
+            NativeMML: {
+                scale: 120
+            },
+            MathMenu: {
+                showRenderer: true
+            },
+            TeX: {
+              extensions: ["enclose.js"]
+            }
+        });
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+	<meta charset="utf-8" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<!-- Our site title and description -->
+	<title>Green's Theorem | Mathemia</title>
+	<meta name="description" content="An online collective of mathematical concepts delivered in a visually engaging way." />
+	<meta name="keywords" content="math, calculus, mathematics, theory, mathematical, maths, integral, derivative, analysis, 3d, cauchy, euler, euclid" />
+	<meta name="author" content="Thorstein Fischer" />
+
+	<!-- Output DocPad produced meta elements -->
+	<meta name="generator" content="DocPad v6.69.0" />
+	<meta name="viewport" content="width=device-width" />
+
+	<!--  Icons -->
+		<!-- <link rel="shortcut icon" href="images/icons/favicon.ico">
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/icons/apple-touch-icon-144-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/icons/apple-touch-icon-114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/icons/apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" href="images/icons/apple-touch-icon-57-precomposed.png"> --> 
+
+	<!-- Styles -->
+	<link  rel="stylesheet" href="/styles/style.css" /><link  rel="stylesheet" href="/styles/nexmenu/component.css" />
+        <link rel='stylesheet' href="/styles/tab-menu.css">
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href='http://fonts.googleapis.com/css?family=Fenix' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+	    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700|Open+Sans:400,600,700|Roboto:400,500,700|Roboto+Slab:400,700|Bitter:400,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="initial-scale=1, width=device-width">
+        <script src="/scripts/modernizr-custom.js"></script>
+</head>
+<body class="section-material-design first-chapter">
+    <ul id="gn-menu" class="gn-menu-main mobile-menu">
+        <li class="gn-trigger">
+            <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+            <nav class="gn-menu-wrapper">
+                <div class="gn-scroller">
+                    <ul class="gn-menu">
+                        <li>
+                            <a class="gn-icon gn-icon-archive" href="/pages/logic">Logic</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-abacus" href="/pages/algebra-home">Algebraic</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-ruler" href="/pages/geo-home">Geometric</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-graph" href="/pages/analytic-home">Analytic</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-bars" href="/pages/probability">Probability and Statistics</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-atom" href="/pages/physics">Physics</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-book" href="/pages/historic">Historic</a>
+                        </li>
+                    </ul>
+                </div><!-- /gn-scroller -->
+            </nav>
+        </li>
+        <li><a href="/">Mathemia</a></li>
+        <li class="extra-links"><a href="/">Physics</a></li>
+        <li class="extra-links"><a href="/">Index</a></li>
+        <li class="extra-links"><a href="/">${\LaTeX}$</a></li>
+        <li class="extra-links"><a href="/">Links</a></li>
+        <li class="extra-links"><a href="/">Resources</a></li>
+        <li class="extra-links"><a href="/">About</a></li>
+    </ul>
+    <script src="/scripts/classie.js"></script>
+    <script src="/scripts/gnmenu.js"></script>
+    <script>
+        new gnMenu( document.getElementById( 'gn-menu' ) );
+    </script>
+	<header>
+
+        <div class="header-wrapper">
+            <div class="header-title">
+                <span class="section-title">Mathematics</span>
+                <span class="chapter-title">Topics</span>
+            </div>
+        </div>
+    </header>
+    <div id="side-nav" class="scroll-bar">
+        <div class="side-nav-wrapper">
+            <span id="logo">
+                <a href="/"><div style="height:128px;">&nbsp;</div></a>
+            <!-- <a href="/">Mathemia</a> -->
+            </span>
+            <nav>
+                <dl>
+                    <a class="" style="padding-left: 22px;background-color: #fff;" href="/">Mathematics Home</a>
+
+                    <dt><span class="strikethrough" id="foundations-nav">Logic</span></dt>
+                    <div id="found-inner" class="inner-menu">
+                        
+                    </div>
+                    <dt><span id="algebra-nav">Algebraic</span></dt>
+                    <div id="alg-inner" class="inner-menu">
+                        
+                        <dd>
+                            <a class="" href="/posts/partial-fractions">Partial Fractions</a>
+                        </dd>
+                        
+                    </div>
+                    <dt><span id="geometry-nav">Geometric</span></dt>
+                    <div id="geo-inner" class="inner-menu">
+                        
+                        <dd>
+                            <a class="" href="/posts/coordinate-systems">Coordinate Systems</a>
+                        </dd>
+                        
+                    </div>
+                    <dt><span id="differential-nav">Analytic</span></dt>
+                    <div  id="diff-inner" class="inner-menu">
+                        <dd>
+                            <a class="" href="/pages/calc-real-home">Calculus and Real Analysis</a>
+                        </dd>
+                        <dd>
+                            <a class="" href="/pages/complex-home">Complex Analysis</a>
+                        </dd>
+                        <dd>
+                            <a class="" href="/pages/diffeq-home">Differential Equations</a>
+                        </dd>
+                        <dd>
+                            <a class="" href="/pages/functional-home">Functional Analysis</a>
+                        </dd>
+                        <dd>
+                            <a class="" href="/pages/numerical-home">Numerical Analysis and Optimization</a>
+                        </dd>
+                    </div>
+                    <dt><span class="strikethrough" id="probstats-nav">Probability and Statistics</span></dt>
+                    <div  id="prob-inner" class="inner-menu">
+                        
+                    </div>
+                    <dt><span class="strikethrough" id="history-nav">Physics</span></dt>
+                    <div id="hist-inner" class="inner-menu">
+                        
+                        <dd>
+                            <a class="" href="/pages/physics">Physics</a>
+                        </dd>
+                        
+                    </div>
+                    <dt><span class="strikethrough" id="history-nav">Historic</span></dt>
+                    <div id="hist-inner" class="inner-menu">
+                        
+                    </div>
+                </dl>
+            </nav>
+            <hr>
+            
+            <div id="lower-menu"><a href="/pages/about">About</a></div>
+            
+            <div id="lower-menu"><a href="/pages/glossary">Index</a></div>
+            
+            <div id="lower-menu"><a href="/pages/latex">${\LaTeX}$</a></div>
+            
+            <div id="lower-menu"><a href="/pages/links">Links</a></div>
+            
+            <div id="lower-menu"><a href="/pages/physics">Physics</a></div>
+            
+            <div id="lower-menu"><a href="/pages/resources">Resources</a></div>
+            
+            <div id="lower-menu"><a href="/pages/terminology">Style Guide</a></div>
+            
+            <div class="legal">
+            <p class="copyright">Mathemia ©</p>
+            </div>
+        </div>
+    </div>
+    <div id="grid-cont">
+        <section class="grid_outer chapter">
+            <h1 class="chapter-title">Green's Theorem</h1>
+            <div class="chapter-content">
+                <div style="display:none;">
+                    $\def\RR{\mathbb{R}}$
+                    $\def\ZZ{\mathbb{Z}}$
+                    $\def\NN{\mathbb{N}}$
+                    $\def\CC{\mathbb{C}}$
+                    $\newcommand{\v}[1]{\vec{\mathbf{#1}}}$
+                    $\newcommand{\(}[1]{\left( #1 \right)}$
+                    $\newcommand{\[}[1]{\left[ #1 \right]}$
+                    $\newcommand{\<}[1]{\left< #1 \right>}$
+                    $\newcommand{\|}[1]{\left| #1 \right|}$
+                    $\newcommand{\lbr}[1]{\left\lbrace #1 \right\rbrace}$
+                    $\newcommand{\f}[1]{f \left( #1 \right)}$
+                    $\newcommand{\g}[1]{g \left( #1 \right)}$
+                    $\def\re{\mathcal{Re}}$
+                    $\def\im{\mathcal{Im}}$
+                </div>
+                <input id="tab1" type="radio" name="tabs" checked>
+<label for="tab1">Theorem</label>
+<input id="tab4" type="radio" name="tabs">
+<label for="tab4">Exercises</label>
+
+<article id="theorem1" class="tabs">
+    <p>In layman's terms, Green's Theorem says that the integral of something over the boundary of a region equals the integral of something else over the region itself.
+
+        When we talk about the positive  orientation on the boundary of $S$, think of taking an arrow tangent to a circle and pointing in the positive direction of the curve, now when we turn it $90^{\circ}$ clockwise it should be pointing <i>out</i> of the circle.</p>
+    <br>
+    <br>    
+    <ul style="list-style:none;">    
+        <li><p>$S$: regular region in $\mathbb{R}$</p></li>
+        <li><p>$\partial S$: piecewise smooth boundary of $S$</p></li>
+        <li><p>$\vec{\mathbf{F}}$: vector field of class $C^1$ on $\bar{S}$</p></li>
+    </ul>
+    <br>
+    <br>
+    <p>
+    Then:
+    $$\int_{\partial S} \vec{\mathbf{F}} \cdot d\vec{\mathbf{x}} = \iint_S \left( \frac{\partial F_2}{\partial x_1} - \frac{\partial F_1}{\partial x_2} \right) \ dA$$
+
+    Now if we let $\vec{\mathbf{F}}= \left( P, Q \right)$ and $\vec{\mathbf{x}} = (x, y)$, then
+    $$\bbox[20px,border:4px groove #1695A3]{\int_{\partial S} P \ dx + Q \ dy = \iint_S \left(  \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) \ dA}$$
+    <hr>
+    Another way to see Green's Theorem is when we take the normal component of  $\mathbf{F}$, which is just the tangential component of $\mathbf{F}$ when it's rotated $90^{\circ}$ counterclockwise. 
+    <br>
+    Let $\vec{\mathbf{n(x)}}$ be the unit normal vector to $\partial S$ for all $\vec{\mathbf{x}}$ belonging to $\partial S$, then,
+    $$\int_{\partial S} \vec{\mathbf{F}} \cdot \vec{\mathbf{n}} \ ds = \iint_S \left(  \frac{\partial F_1}{\partial x_1} + \frac{\partial F_2}{\partial x_2} \right)$$
+
+    In vector form, Green's theorem looks like
+    $$\int_{\partial S} \vec{\mathbf{F}} \cdot d \vec{\mathbf{x}} = \iint_S \left( \nabla \times \vec{\mathbf{F}} \right) \cdot d \vec{\mathbf{x}}$$
+    <hr>
+    Green's theorem can also be used to find the area of $S$ by way of line integrals. The area of $S$ is given by 
+    $$A = \iint_S dA$$
+
+    To make it simple, let's conveniently choose 
+    <br>
+    $$  \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}  = 1$$
+    Now, Green's theorem reduces to
+    <br>
+    $$\int_{\partial S} P \ dx + Q \ dy = \iint_S 1 \ dA$$
+    So,
+    $$\int_{\partial S} P \ dx + Q \ dy = A$$
+    The area of $S$ can then be found by integrating
+    $$A = \frac{1}{2} \int_{\partial S} \left( x \ dy - y \ dx \right)$$
+    We get this result since 
+    $$\frac{d}{dx} \left( \frac{x}{2} \right) = \frac{1}{2} \ \ \mathrm{and} \ \ \frac{d}{dy} \left( -\frac{y}{2} \right) = -\frac{1}{2}$$
+    So, from above,
+    $$\frac{1}{2} - \left( -\frac{1}{2} \right) = 1$$
+
+    Green's theorem has close relationships to Stokes' theorem and the divergence theorem.</p>
+</article>
+
+<article id="exercises4" class="tabs">
+    <ol class="examples">
+        <li><p>Using Green's theorem, evaluate 
+        $$\int_C \left\lbrack  \left(  x^2 + 10xy + y^2 \right) \ dx + \left(  5x^2 + 5xy \right) \ dy \right\rbrack$$
+        where $C$ is the square with the vertices $\left(  0, 0 \right), \left(  2, 0 \right), \left(  0, 2 \right),$ and $\left( 2, 2  \right)$, oriented counter-clockwise.</p></li>
+        <br>
+        <hr>
+        <br>
+        <li><p>Using Green's theorem, evaluate
+        $$\int_{\partial S} \left(  3x^2 \sin{y^2} \ dx + 2x^3y \cos{y^2} \ dy  \right)$$
+        where $S$ is any regular region with piecewise smooth boundary.</p></li>
+        <br>
+        <hr>
+        <br>
+        <li><p>Evaluate directly and then use Green's theorem for the integral
+        $$\int_{\partial S} \left(  xy^2 \ dy - x^2y \ dx  \right)$$
+        where S is the annulus $1 \leq x^2 + y^2 \leq 4$.</p></li>
+        <br>
+        <hr>
+        <br>
+        <li><p>For the integral
+        $$\int_C \left\lbrack  y^3 \ dx + \left(  3x - x^3  \right) \ dy  \right\rbrack$$
+        find $C$ that maximizes it.</p></li>
+    </ol>
+</article>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-L section-animation">&nbsp;</div>
+            <div class="footer-grid-L section-animation">
+            </div>
+            <div class="footer-R section-animation">&nbsp;</div>
+            <div class="footer-grid-R section-animation">
+
+            </div>
+        </div>
+    </footer>
+
+	<!-- Scripts -->
+	<script defer="defer"  src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script><script defer="defer"  src="/scripts/nav-menu.js"></script>
+</body>
+</html>

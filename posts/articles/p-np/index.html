@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- MATHJAX -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            extensions: ["tex2jax.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath: [['$', '$'], ["\\(", "\\)"]],
+                displayMath: [['$$', '$$'], ["\\[", "\\]"]],
+                processEscapes: true
+            },
+            "HTML-CSS": {
+                availableFonts: ["TeX"],
+                scale: 120
+            },
+            NativeMML: {
+                scale: 120
+            },
+            MathMenu: {
+                showRenderer: true
+            },
+            TeX: {
+              extensions: ["enclose.js"]
+            }
+        });
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+	<meta charset="utf-8" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<!-- Our site title and description -->
+	<title>P vs NP | Mathemia</title>
+	<meta name="description" content="An online collective of mathematical concepts delivered in a visually engaging way." />
+	<meta name="keywords" content="math, calculus, mathematics, theory, mathematical, maths, integral, derivative, analysis, 3d, cauchy, euler, euclid" />
+	<meta name="author" content="Thorstein Fischer" />
+
+	<!-- Output DocPad produced meta elements -->
+	<meta name="generator" content="DocPad v6.69.0" />
+	<meta name="viewport" content="width=device-width" />
+
+	<!-- Icons -->
+		<!-- <link rel="shortcut icon" href="images/icons/favicon.ico">
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/icons/apple-touch-icon-144-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/icons/apple-touch-icon-114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/icons/apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" href="images/icons/apple-touch-icon-57-precomposed.png"> -->
+
+	<!-- Styles -->
+	<link  rel="stylesheet" href="/styles/style.css" /><link  rel="stylesheet" href="/styles/nexmenu/component.css" />
+
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href='http://fonts.googleapis.com/css?family=Fenix' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+	    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700|Open+Sans:400,600,700|Roboto:400,500,700|Roboto+Slab:400,700|Bitter:400,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="initial-scale=1, width=device-width">
+        <script src="/scripts/modernizr-custom.js"></script>
+</head>
+<body class="section-material-design">
+    <ul id="gn-menu" class="gn-menu-main mobile-menu">
+        <li class="gn-trigger">
+            <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+            <nav class="gn-menu-wrapper">
+                <div class="gn-scroller">
+                    <ul class="gn-menu">
+                        <li>
+                            <a class="gn-icon gn-icon-archive" href="/pages/logic">Logic</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-abacus" href="/pages/algebra-home">Algebraic</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-ruler" href="/pages/geo-home">Geometric</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-graph" href="/pages/analytic-home">Analytic</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-bars" href="/pages/probability">Probability and Statistics</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-atom" href="/pages/physics">Physics</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-book" href="/pages/historic">Historic</a>
+                        </li>
+                    </ul>
+                </div><!-- /gn-scroller -->
+            </nav>
+        </li>
+        <li><a href="/">Mathemia</a></li>
+        <li class="extra-links"><a href="/pages/physics">Physics</a></li>
+        <li class="extra-links"><a href="/pages/glossary">Index</a></li>
+        <li class="extra-links"><a href="/pages/latex">${\LaTeX}$</a></li>
+        <li class="extra-links"><a href="/pages/links">Links</a></li>
+        <li class="extra-links"><a href="/pages/resources">Resources</a></li>
+        <li class="extra-links"><a href="/pages/about">About</a></li>
+    </ul>
+    <script src="/scripts/classie.js"></script>
+    <script src="/scripts/gnmenu.js"></script>
+    <script>
+        new gnMenu( document.getElementById( 'gn-menu' ) );
+    </script>
+	<header>
+        <div class="header-wrapper">
+            <div class="header-title">
+                <span class="section-title">Mathematics</span>
+                <span class="chapter-title">Topics</span>
+            </div>
+        </div>
+    </header>
+
+    <div id="side-nav" class="scroll-bar">
+        <div class="side-nav-wrapper">
+            <span id="logo">
+                <a href="/"><div style="height:128px;">&nbsp;</div></a>
+            <!-- <a href="/">Mathemia</a> -->
+            </span>
+            <nav>
+                <dl>
+                    <a class="" style="padding-left: 22px;background-color: #fff;" href="/">Mathematics Home</a>
+
+                    <dt><span class="strikethrough" id="foundations-nav">Logic</span></dt>
+                    <div id="found-inner" class="inner-menu">
+                        
+                    </div>
+                    <dt><span id="algebra-nav">Algebraic</span></dt>
+                    <div id="alg-inner" class="inner-menu">
+                        
+                        <dd>
+                            <a class="" href="/posts/partial-fractions">Partial Fractions</a>
+                        </dd>
+                        
+                    </div>
+                    <dt><span id="geometry-nav">Geometric</span></dt>
+                    <div id="geo-inner" class="inner-menu">
+                        
+                        <dd>
+                            <a class="" href="/posts/coordinate-systems">Coordinate Systems</a>
+                        </dd>
+                        
+                    </div>
+                    <dt><span id="differential-nav">Analytic</span></dt>
+                    <div  id="diff-inner" class="inner-menu">
+                        <dd>
+                            <a class="" href="/pages/calc-real-home">Calculus and Real Analysis</a>
+                        </dd>
+                        <dd>
+                            <a class="" href="/pages/complex-home">Complex Analysis</a>
+                        </dd>
+                        <dd>
+                            <a class="" href="/pages/diffeq-home">Differential Equations</a>
+                        </dd>
+                        <dd>
+                            <a class="" href="/pages/functional-home">Functional Analysis</a>
+                        </dd>
+                        <dd>
+                            <a class="" href="/pages/numerical-home">Numerical Analysis and Optimization</a>
+                        </dd>
+                    </div>
+                    <dt><span class="strikethrough" id="probstats-nav">Probability and Statistics</span></dt>
+                    <div  id="prob-inner" class="inner-menu">
+                        
+                    </div>
+                    <dt><span class="strikethrough" id="history-nav">Physics</span></dt>
+                    <div id="hist-inner" class="inner-menu">
+                        
+                        <dd>
+                            <a class="" href="/pages/physics">Physics</a>
+                        </dd>
+                        
+                    </div>
+                    <dt><span class="strikethrough" id="history-nav">Historic</span></dt>
+                    <div id="hist-inner" class="inner-menu">
+                        
+                    </div>
+                </dl>
+            </nav>
+            <hr>
+            
+            <div id="lower-menu"><a href="/pages/about">About</a></div>
+            
+            <div id="lower-menu"><a href="/pages/glossary">Index</a></div>
+            
+            <div id="lower-menu"><a href="/pages/latex">${\LaTeX}$</a></div>
+            
+            <div id="lower-menu"><a href="/pages/links">Links</a></div>
+            
+            <div id="lower-menu"><a href="/pages/physics">Physics</a></div>
+            
+            <div id="lower-menu"><a href="/pages/resources">Resources</a></div>
+            
+            <div id="lower-menu"><a href="/pages/terminology">Style Guide</a></div>
+            
+            <div class="legal">
+            <p class="copyright">Mathemia ©</p>
+            </div>
+        </div>
+    </div>
+    <div id="grid-cont">
+        <section class="grid_outer chapter">
+            <h1 class="chapter-title">P vs NP</h1>
+            <div class="chapter-content">
+                <p>Interesting P vs. NP overview from <a href="http://mathforum.org/dr.math/">Ask Dr. Math</a></p>
+<blockquote cite="mathforum.org/library/drmath/view/71720.html">
+    Certain classes of problems concern arbitrary amounts of data.  For
+    example, a very simple problem is this: given n numbers, find the
+    largest.  You can find the largest simply by looking through and 
+    keeping track of the largest so far, so when you get to the end of the 
+    list, you&#39;ll know the answer.  If I give a computer a list of 1000
+    numbers, it&#39;ll take a certain amount of time to find the largest.  If
+    I give it 10 times that many numbers, it will take it 10 times as
+    long, et cetera.<br>
+    <br>
+    A harder problem is to sort into increasing order an arbitrary list of
+    n numbers.  If I give a list that&#39;s 10 times as long, it will, in
+    fact, take a bit more than 10 times as long to sort it, but not
+    outrageously more.  Likely, it will take about 10 x log(10) times as
+    long, roughly.<br>
+    <br>
+    Computer scientists classify problems by how long it takes to solve
+    them in terms of the size of the problem.  For the first one, it&#39;ll
+    take time proportional to n; for the second, it takes time
+    proportional to n log(n).  Other types of problems can be much harder.<br>
+    <br>
+    Computer scientists have a definition for problems that can be solved
+    &quot;reasonably fast&quot;, and they call it &quot;P&quot;.  This stands for &quot;polynomial
+    time&quot;, and it means that the problems can be solved in time that is
+    proportional to some polynomial function of n.<br>
+    <br>
+    There is a very large list of VERY interesting and important problems
+    that nobody knows how to solve in polynomial time, and, even more
+    interesting, if ANY of them can be solved in polynomial time, then
+    they ALL can.  And many very smart people have been looking for 
+    a fast method to solve many of the problems, and nobody has ever
+    succeeded.<br>
+    <br>
+    So one suspects that these problems (for example, the &quot;traveling
+    salesman problem&quot;) are NOT in P.  But on the other hand nobody has been
+    able to prove that any of the problems is NOT in P!<br>
+    <br>
+    These problems (for technical reasons) are called NP problems (&quot;NP&quot;
+    stands for &quot;non-deterministic polynomial&quot;), so one of the hardest and
+    most important problems in computer science is, &quot;Is P = NP?&quot;  In other
+    words, are the NP problems solvable in polynomial time?  Probably not,
+    but nobody knows.<br>
+    <br>
+    There are some solutions to NP problems, of course, but they run in
+    far more than polynomial time.  For example, you can solve the
+    traveling salesman problem by simply trying all possible routes and
+    picking the shortest.  But if the salesman has to visit n cities, 
+    there are n! (n factorial) routes, and n! increases much faster than
+    any polynomial in n.<br>
+    <br>
+    - Doctor Tom
+</blockquote>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-L section-animation">&nbsp;</div>
+            <div class="footer-grid-L section-animation">
+            </div>
+            <div class="footer-R section-animation">&nbsp;</div>
+            <div class="footer-grid-R section-animation">
+
+            </div>
+        </div>
+    </footer>
+
+	<!-- Scripts -->
+	<script defer="defer"  src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script><script defer="defer"  src="/scripts/nav-menu.js"></script>
+</body>
+</html>

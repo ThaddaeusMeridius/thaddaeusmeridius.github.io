@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<title>Mathemia</title>
+	<link href="http://mathemia.com/atom.xml" rel="self"/>
+	<link href="http://mathemia.com"/>
+	<updated>2014-07-29T11:54:57.630Z</updated>
+	<id>http://mathemia.com</id>
+	<author>
+		<name>Thorstein Fischer</name>
+		<email>tfischer@hotmail.ca</email>
+	</author>
+
+	
+</feed>

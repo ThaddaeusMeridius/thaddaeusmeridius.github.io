@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- MATHJAX -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            extensions: ["tex2jax.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath: [['$', '$'], ["\\(", "\\)"]],
+                displayMath: [['$$', '$$'], ["\\[", "\\]"]],
+                processEscapes: true
+            },
+            "HTML-CSS": {
+                availableFonts: ["TeX"],
+                scale: 120
+            },
+            NativeMML: {
+                scale: 120
+            },
+            MathMenu: {
+                showRenderer: true
+            },
+            TeX: {
+              extensions: ["enclose.js"]
+            }
+        });
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+	<meta charset="utf-8" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<!-- Our site title and description -->
+	<title>Stokes' Theorem | Mathemia</title>
+	<meta name="description" content="An online collective of mathematical concepts delivered in a visually engaging way." />
+	<meta name="keywords" content="math, calculus, mathematics, theory, mathematical, maths, integral, derivative, analysis, 3d, cauchy, euler, euclid" />
+	<meta name="author" content="Thorstein Fischer" />
+
+	<!-- Output DocPad produced meta elements -->
+	<meta name="generator" content="DocPad v6.69.0" />
+	<meta name="viewport" content="width=device-width" />
+
+	<!--  Icons -->
+		<!-- <link rel="shortcut icon" href="images/icons/favicon.ico">
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/icons/apple-touch-icon-144-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/icons/apple-touch-icon-114-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/icons/apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" href="images/icons/apple-touch-icon-57-precomposed.png"> --> 
+
+	<!-- Styles -->
+	<link  rel="stylesheet" href="/styles/style.css" /><link  rel="stylesheet" href="/styles/nexmenu/component.css" />
+        <link rel='stylesheet' href="/styles/tab-menu.css">
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href='http://fonts.googleapis.com/css?family=Fenix' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+	    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700|Open+Sans:400,600,700|Roboto:400,500,700|Roboto+Slab:400,700|Bitter:400,700' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="initial-scale=1, width=device-width">
+        <script src="/scripts/modernizr-custom.js"></script>
+</head>
+<body class="section-material-design first-chapter">
+    <ul id="gn-menu" class="gn-menu-main mobile-menu">
+        <li class="gn-trigger">
+            <a class="gn-icon gn-icon-menu"><span>Menu</span></a>
+            <nav class="gn-menu-wrapper">
+                <div class="gn-scroller">
+                    <ul class="gn-menu">
+                        <li>
+                            <a class="gn-icon gn-icon-archive" href="/pages/logic">Logic</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-abacus" href="/pages/algebra-home">Algebraic</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-ruler" href="/pages/geo-home">Geometric</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-graph" href="/pages/analytic-home">Analytic</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-bars" href="/pages/probability">Probability and Statistics</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-atom" href="/pages/physics">Physics</a>
+                        </li>
+                        <li>
+                            <a class="gn-icon gn-icon-book" href="/pages/historic">Historic</a>
+                        </li>
+                    </ul>
+                </div><!-- /gn-scroller -->
+            </nav>
+        </li>
+        <li><a href="/">Mathemia</a></li>
+        <li class="extra-links"><a href="/">Physics</a></li>
+        <li class="extra-links"><a href="/">Index</a></li>
+        <li class="extra-links"><a href="/">${\LaTeX}$</a></li>
+        <li class="extra-links"><a href="/">Links</a></li>
+        <li class="extra-links"><a href="/">Resources</a></li>
+        <li class="extra-links"><a href="/">About</a></li>
+    </ul>
+    <script src="/scripts/classie.js"></script>
+    <script src="/scripts/gnmenu.js"></script>
+    <script>
+        new gnMenu( document.getElementById( 'gn-menu' ) );
+    </script>
+	<header>
+
+        <div class="header-wrapper">
+            <div class="header-title">
+                <span class="section-title">Mathematics</span>
+                <span class="chapter-title">Topics</span>
+            </div>
+        </div>
+    </header>
+    <div id="side-nav" class="scroll-bar">
+        <div class="side-nav-wrapper">
+            <span id="logo">
+                <a href="/"><div style="height:128px;">&nbsp;</div></a>
+            <!-- <a href="/">Mathemia</a> -->
+            </span>
+            <nav>
+                <dl>
+                    <a class="" style="padding-left: 22px;background-color: #fff;" href="/">Mathematics Home</a>
+
+                    <dt><span class="strikethrough" id="foundations-nav">Logic</span></dt>
+                    <div id="found-inner" class="inner-menu">
+                        
+                    </div>
+                    <dt><span id="algebra-nav">Algebraic</span></dt>
+                    <div id="alg-inner" class="inner-menu">
+                        
+                        <dd>
+                            <a class="" href="/posts/partial-fractions">Partial Fractions</a>
+                        </dd>
+                        
+                    </div>
+                    <dt><span id="geometry-nav">Geometric</span></dt>
+                    <div id="geo-inner" class="inner-menu">
+                        
+                        <dd>
+                            <a class="" href="/posts/coordinate-systems">Coordinate Systems</a>
+                        </dd>
+                        
+                    </div>
+                    <dt><span id="differential-nav">Analytic</span></dt>
+                    <div  id="diff-inner" class="inner-menu">
+                        <dd>
+                            <a class="" href="/pages/calc-real-home">Calculus and Real Analysis</a>
+                        </dd>
+                        <dd>
+                            <a class="" href="/pages/complex-home">Complex Analysis</a>
+                        </dd>
+                        <dd>
+                            <a class="" href="/pages/diffeq-home">Differential Equations</a>
+                        </dd>
+                        <dd>
+                            <a class="" href="/pages/functional-home">Functional Analysis</a>
+                        </dd>
+                        <dd>
+                            <a class="" href="/pages/numerical-home">Numerical Analysis and Optimization</a>
+                        </dd>
+                    </div>
+                    <dt><span class="strikethrough" id="probstats-nav">Probability and Statistics</span></dt>
+                    <div  id="prob-inner" class="inner-menu">
+                        
+                    </div>
+                    <dt><span class="strikethrough" id="history-nav">Physics</span></dt>
+                    <div id="hist-inner" class="inner-menu">
+                        
+                        <dd>
+                            <a class="" href="/pages/physics">Physics</a>
+                        </dd>
+                        
+                    </div>
+                    <dt><span class="strikethrough" id="history-nav">Historic</span></dt>
+                    <div id="hist-inner" class="inner-menu">
+                        
+                    </div>
+                </dl>
+            </nav>
+            <hr>
+            
+            <div id="lower-menu"><a href="/pages/about">About</a></div>
+            
+            <div id="lower-menu"><a href="/pages/glossary">Index</a></div>
+            
+            <div id="lower-menu"><a href="/pages/latex">${\LaTeX}$</a></div>
+            
+            <div id="lower-menu"><a href="/pages/links">Links</a></div>
+            
+            <div id="lower-menu"><a href="/pages/physics">Physics</a></div>
+            
+            <div id="lower-menu"><a href="/pages/resources">Resources</a></div>
+            
+            <div id="lower-menu"><a href="/pages/terminology">Style Guide</a></div>
+            
+            <div class="legal">
+            <p class="copyright">Mathemia ©</p>
+            </div>
+        </div>
+    </div>
+    <div id="grid-cont">
+        <section class="grid_outer chapter">
+            <h1 class="chapter-title">Stokes' Theorem</h1>
+            <div class="chapter-content">
+                <div style="display:none;">
+                    $\def\RR{\mathbb{R}}$
+                    $\def\ZZ{\mathbb{Z}}$
+                    $\def\NN{\mathbb{N}}$
+                    $\def\CC{\mathbb{C}}$
+                    $\newcommand{\v}[1]{\vec{\mathbf{#1}}}$
+                    $\newcommand{\(}[1]{\left( #1 \right)}$
+                    $\newcommand{\[}[1]{\left[ #1 \right]}$
+                    $\newcommand{\<}[1]{\left< #1 \right>}$
+                    $\newcommand{\|}[1]{\left| #1 \right|}$
+                    $\newcommand{\lbr}[1]{\left\lbrace #1 \right\rbrace}$
+                    $\newcommand{\f}[1]{f \left( #1 \right)}$
+                    $\newcommand{\g}[1]{g \left( #1 \right)}$
+                    $\def\re{\mathcal{Re}}$
+                    $\def\im{\mathcal{Im}}$
+                </div>
+                <input id="tab1" type="radio" name="tabs" checked>
+<label for="tab1">Theorem</label>
+<input id="tab3" type="radio" name="tabs">
+<label for="tab3">Examples</label>
+<input id="tab4" type="radio" name="tabs">
+<label for="tab4">Exercises</label>
+<article id="theorem1" class="tabs">
+    <p>Stokes' Theorem is used in higher dimensional cases, specifically in $\mathbb{R}^3$ with line integrals of the form
+
+    $$ \int_C \mathrm{P} \, dx + \mathrm{Q} \, dy + \mathrm{R} \, dz \tag{1}$$
+
+    and
+    $$ \int_C f \, ds \tag{2} $$
+
+    If 
+
+    $\vec{\mathbf{F}} = \mathrm{P}\ \vec{\mathbf{i}} + \mathrm{Q}\ \vec{\mathbf{j}}+ \mathrm{R}\ \vec{\mathbf{k}}$ 
+
+    and if 
+    $\vec{\tau}$
+     represents the forward unit tangent vector to 
+     $C$, then $(1)$ becomes
+
+    $$\bbox[20px,border:4px groove black]{\int_C \mathrm{P} \, dx + \mathrm{Q} \, dy + \mathrm{R} \, dz = \int_C \vec{\mathbf{F}} \cdot \vec{\tau} \, ds = \int_C \vec{\mathbf{F}} \cdot d\vec{\mathbf{s}}}$$
+
+
+    Taking it as an extensions of Green's Theorem, where $\vec{\mathbf{n}} = \cos{\alpha}\ \vec{\mathbf{i}} + \cos{\beta}\ \vec{\mathbf{j}} + \cos{\gamma}\ \vec{\mathbf{k}}$ is the unit normal vector to $S$
+
+    $$\iint_S \left\lbrack \left( \frac{\partial{R}}{\partial{y}} - \frac{\partial Q}{\partial z} \right) \cos{\alpha} + \left( \frac{\partial{P}}{\partial{z}} - \frac{\partial R}{\partial x} \right) \cos{\beta} + \left( \frac{\partial{Q}}{\partial{x}} - \frac{\partial P}{\partial y} \right) \cos{\gamma} \right\rbrack \, ds = \int_C \mathrm{P} \, dx + \mathrm{Q} \, dy + \mathrm{R} \, dz$$
+
+    or in vector notation with 
+
+    $\vec{\mathbf{F}} = \mathrm{P}\ \vec{\mathbf{i}} + \mathrm{Q}\ \vec{\mathbf{j}}+ \mathrm{R}\ \vec{\mathbf{k}}$</p>
+
+    <p>
+    $$\int_{\partial S} \vec{\textbf{F}} \cdot d \vec{\textbf{x}} = \iint_S \left( \mathrm{curl} \ \vec{\textbf{F}} \right) \cdot \vec{\textbf{n}} \ dA = \iint_S \mathrm{curl} \ \vec{\mathbf{F}} \cdot d \vec{\mathbf{S}}$$
+    </p>
+
+    <p>Where $\partial S$ is the boundary of the set $S$</p>
+    <br>
+    <blockquote>
+        <p>Remember that:</p>
+        <p></p>
+        <p>$$\mathrm{curl} \ \vec{\textbf{F}} = \nabla \times \vec{\textbf{F}}$$</p>
+        <p>The cross-product of $\nabla$ and $\vec{\textbf{F}}$</p>
+        <p></p>
+        <p>If we suppose $\vec{\textbf{F}}$ is a $C^{1}$ vector field on an open subset of $\mathbb{R}^3$ and as such $\vec{\mathbf{F}}= \langle F_1, F_2, F_3 \rangle$, where $F_1$, $F_2$, and $F_3$ are functions of $x_1$, $x_2$, and $x_3$, then</p>
+        <p></p>
+        <p>$$\mathrm{curl} \ \vec{\mathbf{F}}= \Biggl\langle \frac{\partial}{\partial x_2} F_3 - \frac{\partial}{\partial x_3} F_2, \ \frac{\partial}{\partial x_3} F_1 - \frac{\partial}{\partial x_1} F_3, \ \frac{\partial}{\partial x_1} F_2 - \frac{\partial}{\partial x_2} F_1 \Biggr\rangle$$</p>
+        <p></p>
+        <p>Or in unit vector notation:</p>
+        <p>$$\mathrm{curl} \ \vec{\mathbf{F}}= \left( \frac{\partial}{\partial x_2} F_3 - \frac{\partial}{\partial x_3} F_2\right)\vec{\mathbf{i}}+ \left( \frac{\partial}{\partial x_3} F_1 - \frac{\partial}{\partial x_1} F_3 \right)\vec{\mathbf{j}} + \left( \ \frac{\partial}{\partial x_1} F_2 - \frac{\partial}{\partial x_2} F_1 \right)\vec{\mathbf{k}}$$</p>
+        <br>
+    </blockquote>
+    <br></br>
+    <br></br>
+    <p>But a closed curve in $\mathbb{R}^3$ is the boundary of infinitely many surfaces in $\mathbb{R}^3$. Think of the unit sphere centered at the origin, if we keep it's diameter in the $xy$-plane, but stretch it out in the $z$-axis, the boundary is still the same. As such, Stoke's theorem say's that if $C$ is a closed curve in $\mathbb{R}^3$ and $S$ is <em>any</em> oriented surface bounded by $C$, then</p><br>
+</article>
+<article id="examples3" class="tabs">
+    <h2 class="article-title">Example 1</h2>
+    <p>
+        Verify Stokes' Theorem if $\vec{\mathbf{F}} = y \, \vec{\mathbf{i}} + z \, \vec{\mathbf{j}} + x \, \vec{\mathbf{k}}$ and $S$ is the portion of the plane $x+y+z=0$ cut out by the cylinder $x^2 + y^2 =1$, and $\partial S$ is it's boundary (an ellipse)</p>
+    <hr>
+    <img src="/images/stokes-theorem-novec.svg" style="width:50%;"><img src="/images/stokes-theorem-vec.svg" style="width:50%;">
+    <hr><p>
+    Re-arranging the equation of the surface $S$, we see that
+    $$z=-x-y \ \ \ \ \implies \ \ \ \ f\left( x, y \right) = -x-y $$
+    So,
+    $$\vec{\mathbf{n}} \, dS = \left< -f_x,-f_y, 1 \right> \, dx \, dy = \left< 1,1,1 \right> \,dx \,dy$$
+    and 
+
+    $$\mathrm{curl} \, \vec{\mathbf{F}} = 
+    \left| \begin{matrix}
+    \vec{\mathbf{i}} & \vec{\mathbf{j}} & \vec{\mathbf{k}}  \\
+    \partial_x & \partial_y & \partial_z \\
+    y & z & x 
+    \end{matrix} \right|
+    = - \vec{\mathbf{i}} - \vec{\mathbf{j}}  - \vec{\mathbf{k}}
+    $$
+
+    Therefore 
+    $$\iint_S \mathrm{curl} \, \vec{\mathbf{F}} \cdot \vec{\mathbf{n}} \, dS = -\iint_{S_{int}} 3 \, dA = \color{red}{-3\pi}$$</p>
+    <hr><p>
+    If we wanted to evaluate this using line integrals, we would have
+    $$x= \cos{t}, \ y=\sin{t}, \ z=-\cos{t} - \sin{t}$$
+    So,
+    $$\begin{align}
+    \oint_C y \,dx + z \, dy + x \, dz &= \int_0^{2\pi} \left[ -\sin^2{t} - \left( \cos^2{t} + \sin{t} \cos{t} \right) + \cos{t} \, \left( \sin{t} - \cos{t} \right) \right] \, dt \\
+    &= \int_0^{2\pi} \left( -\sin^2{t} - \cos^2{t} - \cos^2{t} \right) \, dt \\
+    &=\int_0^{2\pi} \left[ -1 -\dfrac{1}{2} \, \left( 1+\cos{2t} \right) \right] \, dt \\
+    &= - \dfrac{3}{2} \cdot 2\pi = \color{red}{ -3 \pi}
+    \end{align}$$</p>
+    <br>
+</article>
+<article id="exercises4" class="tabs">
+        <ol class="examples">
+            <li><p>Use Stoke's Theorem to calculate $$\int_C \left( x-z \right) dx + \left( x+y \right) dy + \left( y+z \right) dz$$ $C$: ellipse where the plane $z=y$ intersects the cylinder $x^2 + y^2 = 1$, oriented counter-clockwise $\circlearrowleft$ as viewed from above</p>
+                <br>
+                <br>
+                <li><p>Use Stoke's Theorem to calculate $$\int_C ydx+y^2dy+ \left( x+2z \right) dz$$ $C$: curve of interarticle of the sphere $x^2+y^2+z^2=a^2$ and the plane $y+z=a$, oriented $\circlearrowleft$ as viewed from above</p></li>
+                <br>
+                <br>
+                <li><p>Calculate $$\iint_S \nabla \times \ \vec{\mathbf{F}} \cdot \vec{\mathbf{n}} \ dA$$ where $$\vec{\mathbf{F}} \left( x, y, z \right) = y \vec{\mathbf{i}} + \left( x-2x^3z \right) \vec{\mathbf{j}} + xy^3 \vec{\mathbf{k}}$$ and $S$ is the upper half of the sphere $x^2 +y^2+z^2=a^2$</p></li>
+                <br>
+                <br>
+                <li><p>Calculate $$\iint_S \nabla \times \ \vec{\mathbf{F}} \cdot \vec{\mathbf{n}} \ dA$$ where $$\vec{\mathbf{F}} \left( x, y, z \right) = z^2 \vec{\mathbf{i}} - 3xy \vec{\mathbf{j}} + x^3y^3 \vec{\mathbf{k}}$$ and $S$ is the part of $z=5-x^2-y^2$ above the plane $z=1$. Assume S is oriented upwards</p></li>
+                <br>
+                <br>
+                <li><p>Evaluate $$\int_C \vec{\mathbf{F}} \cdot d \vec{\mathbf{r}}$$ where $$\vec{\mathbf{F}} \left( x, y, z \right) = z^2 \vec{\mathbf{i}} + y^2 \vec{\mathbf{j}} + x \vec{\mathbf{k}}$$ and $C$ is the triangle with vertices $ \left( 1,0,0 \right), \left( 0,1,0 \right), \left( 0,0,1 \right)$ with counter-clockwise rotation</p></li>
+                <br>
+                <br>
+                <li><p>Evaluate $$\int_C \vec{\mathbf{F}} \cdot d \vec{\mathbf{r}}$$ where $$\vec{\mathbf{F}} \left( x, y, z \right) = \left( z-y \right) \vec{\mathbf{i}} - \left( x+z \right) \vec{\mathbf{j}} - \left( x+y \right) \vec{\mathbf{k}}$$ and $C$ is the curve $ x^2 + y^2 + z^2 = 4 $ intersected by the plane $ z=y $ oriented counter-clockwise as viewed from above</p></li>
+                <br>
+                <br>
+                <li><p>Use Stoke's theorem to evaluate $$\int_C x^2e^{5z} \ dx + x\cos y \ dy + 3y \ dz$$ where $C$ is defined by the parametric equations \begin{align*} x &= 0\\ y &= 2 + 2 \cos t\\ z &= 2 + 2 \sin t \end{align*} For $0 \leq t \leq 2\pi$</p></li>
+                <br>
+                <br>
+                <li><p>Evaluate $$\iint_S x \vec{\mathbf{k}} \cdot d \vec{\mathbf{A}}$$ Where $S$ is the surface $ z = x \left( 1-x \right) y \left( 1-y \right)$ for $0 \leq x \leq 1$ and $0 \leq y \leq 1$ 
+                <br>
+                <br>
+                <b>HINT:</b> By Stoke's Theorem, conclude that $\iint_S x \vec{\mathbf{k}} \cdot d \vec{\mathbf{A}} = \oint_C \frac{1}{2} x^2 \ dy$</p></li>
+                <br>
+                <br>
+                <li><p>Use Stoke's Theorem to evaluate $$\iint_S \left( x^3e^y \ \vec{\mathbf{i}} - 3x^2e^y \ \vec{\mathbf{j}} \ \right) \cdot d \vec{\mathbf{A}}$$ where $S$ is the upper half of the unit sphere $\left( x^2 + y^2 + z^2 = 1 \right)$</p></li>
+                <br>
+                <li><p>Use Stoke's Theorem to evaluate $$\iint_S \left( -3xz^2 \ \vec{\mathbf{i}} - z^3 \ \vec{\mathbf{k}} \ \right) \cdot d \vec{\mathbf{A}}$$ where $S$ is the surface $z = x^2 + y^2$ for $z\leq 4$</p></li>
+        </ol>
+</article>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-L section-animation">&nbsp;</div>
+            <div class="footer-grid-L section-animation">
+            </div>
+            <div class="footer-R section-animation">&nbsp;</div>
+            <div class="footer-grid-R section-animation">
+
+            </div>
+        </div>
+    </footer>
+
+	<!-- Scripts -->
+	<script defer="defer"  src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script><script defer="defer"  src="/scripts/nav-menu.js"></script>
+</body>
+</html>
